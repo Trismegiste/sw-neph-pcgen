@@ -1,0 +1,15 @@
+.content {
+    margin: 0.1em;
+}
+
+.big-button {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 1em
+}
+
+footer {
+    margin: 2em;
+    font-size: 60%;
+    text-align: center;
+}
