@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Savage Worlds PC Random Generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./pure-min.css"/>
+        <link rel="stylesheet" href="./grids-responsive-min.css"/>
+        <link rel="stylesheet" href="./main.css"/>
+    </head>
+    <body>
+        <div class="content">
+
+            <table>
+
+                <colgroup span="4" width="85"></colgroup>
+                <tbody>
+                    <tr>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" sdval="1" sdnum="1036;" height="17" align="center">1</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left">Élève primaire</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">1D6+5</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">1 h</td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="17" align="center">2-3</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left">Collégien </td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">1D6+10</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">4 h</td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="17" align="center">4-6</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left">Lycéen – étudiant</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">2D4+14</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">2 j</td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="17" align="center">7-15</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left">Adulte</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">2D20+18</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">1 semaine</td>
+                    </tr>
+                    <tr>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="17" align="center">16-20</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left">Retraité</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">3D10+50</td>
+                        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">1 mois</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre id="export">var obj = {
+            </pre>
+
+        </div>
+
+        <script src="./jquery.min.js"></script>
+        <script>
+            $('table tr').each(function () {
+                var row = $(this).children('td');
+                $('#export').append(row.eq(0).text());
+            });
+            $('#export').append('\n};');
+        </script>
+    </body>
+</html>
