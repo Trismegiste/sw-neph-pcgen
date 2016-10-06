@@ -205,14 +205,12 @@ var generator = {
         //parents
         var cpt = 2;
         draw = dice.roll(10);
-        if (draw >= 7) {
-            cpt = 1;
-            if (draw === 10) {
-                cpt = 0;
+        if (draw < 10) {
+            nc.parent.push({gender: 'F', age: nc.age + 20 + dice.roll(10)});
+            if (draw <= 7) {
+                nc.parent.push({gender: 'M', age: nc.age + 20 + dice.roll(10)});
             }
         }
-        nc.parent.push({gender: 'F', age: nc.age + 20 + dice.roll(10)});
-        nc.parent.push({gender: 'M', age: nc.age + 20 + dice.roll(10)});
         // Ka-Sun
         draw = dice.roll(20);
         if (draw > 16) {
