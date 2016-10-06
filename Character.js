@@ -12,6 +12,7 @@ var Character = function () {
     this.attrCreationPoint = 5;
     this.skillCreationPoint = 15;
     this.inCouple = false;
+    this.sibling = [];
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {

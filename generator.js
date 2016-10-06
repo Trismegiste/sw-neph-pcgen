@@ -1,10 +1,7 @@
 var generator = {
     init: function () {
-        $('button').click(function (e) {
-            var obj = generator.generate();
-            generator.render(obj);
-            return false;
-        });
+        var obj = generator.generate();
+        generator.render(obj);
     },
     render: function (pc) {
         //attr
@@ -180,8 +177,20 @@ var generator = {
                 remaining -= 2;
             }
         }
+        // finishing touches
+        var sibling = this.siblingCount[dice.roll(8)];
+        for (var k = 0; k < sibling; k++) {
+            nc.sibling.push(this.generateSibling(nc.age));
+        }
 
         return nc;
+    },
+    siblingCount: [0, 1, 1, 1, 1, 2, 2, 3],
+    generateSibling: function (ageBase) {
+        return {
+            gender: Math.random() > 0.5 ? 'M' : 'F',
+            age: ageBase - 6 + dice.roll(12)
+        };
     },
     ageModel: [
         {proba: 1, skill: 7, init: function (ch) {
