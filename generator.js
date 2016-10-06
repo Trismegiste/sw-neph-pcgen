@@ -96,11 +96,34 @@ var generator = {
             nc.addEdge('Très riche');
         }
 
-        // social : noble (ou statut), contacts etc...
-        // pour la thune : utiliser les atout fric (à trier à part) poches percés, normal , riche , très riche
-        // on rajoute peut-etre des atouts/hindrances
+        // finalizing hindrances
+        var target;
+        switch (dice.roll(4)) {
+            case 1 :
+                target = 0;
+                break;
+            case 4 :
+                target = 4;
+                break;
+            default:
+                target = 2;
+        }
+        // adding more hindrance
+        while (target > nc.getHindrancePoint()) {
+            var lst = Object.keys(savageWorlds.hindrance);
+            var draw = Math.floor(Math.random() * lst.length);
+            try {
+                var expected = 'Majeur';
+                if ((target === 2) && (nc.getHindrancePoint() === 0)) {
+                    expected = 'Mineur';
+                } else if ((target - nc.getHindrancePoint()) < 2) {
+                    expected = 'Mineur';
+                }
+                nc.addHindrance(lst[draw], expected);
+            } catch (e) {
 
-
+            }
+        }
 
         return nc;
     },
@@ -130,6 +153,9 @@ var generator = {
                 if (dice.roll(4) == 1) {
                     ch.addHindrance('Myope', 'Mineur');
                 }
+                if (Math.random() > 0.5) {
+                    ch.inCouple = true;
+                }
             }},
         {proba: 5, skill: 12, init: function (ch) {
                 ch.age = dice.roll(10) + dice.roll(10) + dice.roll(10) + 50;
@@ -137,6 +163,9 @@ var generator = {
                 ch.activity = 'Retraité';
                 ch.skillCreationPoint = 20;
                 ch.addHindrance('Agé');
+                if (Math.random() > 0.5) {
+                    ch.inCouple = true;
+                }
             }}
     ],
     rollAge: function () {

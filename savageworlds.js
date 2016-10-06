@@ -38,9 +38,6 @@ var savageWorlds = {
         "Arrogant": {
             type: "Majeur",
             descr: "Le personnage est le meilleur dans un domaine, et se sent obligé de dominer les autres."},
-        "Aveugle": {
-            type: "Majeur",
-            descr: "-6 à toutes les actions impliquant la vision, -2 sur les jet sociaux et gain d'un Atout supplémentaire."},
         "Bavard": {
             type: "Mineur",
             descr: "Le personnage ne sait pas tenir sa langue."},
@@ -62,9 +59,6 @@ var savageWorlds = {
         "Couard": {
             type: "Majeur",
             descr: "-2 en Tripes."},
-        "Cul-de-jatte": {
-            type: "Majeur",
-            descr: "-2 en Allure, et le dé de course est d4. Sans une jambe de bois, l'allure passe à 2, et -2 aux compétences nécessitant une mobilité."},
         "Cupide": {
             type: "Mineur/Majeur",
             descr: "Le personnage est obsédé par la richesse."},

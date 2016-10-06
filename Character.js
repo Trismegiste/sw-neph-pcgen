@@ -12,6 +12,7 @@ var Character = function () {
     this.attrCreationPoint = 5;
     this.skillCreationPoint = 15;
     this.overspentPoint = 0;
+    this.inCouple = false;
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {
@@ -64,6 +65,14 @@ var Character = function () {
     this.addHindrance = function (key, type) {
         var level;
         var h = savageWorlds.hindrance[key];
+
+        if (h === undefined) {
+            throw new 'Unknown ' + key;
+        }
+        if (this.hindrance[key] !== undefined) {
+            return;
+        }
+
         if (h.type === 'Mineur/Majeur') {
             if (type === undefined) {
                 throw 'You must choose a type';
