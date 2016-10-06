@@ -17,39 +17,21 @@ var generator = {
         nc.emergencyTime = ageChoice.emergencyTime;
         nc.activity = ageChoice.label;
 
-        // attributes
-        for (var k = 0; k < 5; k++) {
-            var attr = savageWorlds.trait.attribute[Math.floor(Math.random() * 5)];
-            nc.increaseAttribute(attr);
+        var skill = Object.keys(savageWorlds.trait.skill);
+        var nb = 10;
+        for (var i = 0; i < nb; i++) {
+            var draw = Math.floor(Math.random() * skill.length);
+            nc.increaseSkill(skill[draw]);
         }
-
-        var invertSkill = {};
-        Object.keys(savageWorlds.trait.skill).forEach(function (key, index) {
-            var attr = savageWorlds.trait.skill[key];
-            if (invertSkill[attr] === undefined) {
-                invertSkill[attr] = [key];
-            } else {
-                invertSkill[attr].push(key);
-            }
-        });
-        //console.log(invertSkill);
-
-        var attributeSort = savageWorlds.trait.attribute.slice();
-        attributeSort.sort(function (a, b) {
-            return nc.attribute[b] - nc.attribute[a];
-        });
-        //console.log(attributeSort);
-
-        var countPerAttr = [3, 2, 2, 1, 1];
-        for (k = 0; k < 5; k++) {
-            var nb = countPerAttr[k];
-            var currentAttr = attributeSort[k];
-            var oneAttrSkill = invertSkill[currentAttr];
-            for (var i = 0; i < nb; i++) {
-                var draw = Math.floor(Math.random() * oneAttrSkill.length);
-                nc.increaseSkill(oneAttrSkill[draw]);
-            }
+        // investment
+        var skill = Object.keys(nc.skill);
+        var nb = 10;
+        for (i = 0; i < nb; i++) {
+            var draw = Math.floor(Math.random() * skill.length);
+            nc.increaseSkill(skill[draw]);
         }
+        //        console.log(invertSkill);
+
 
 
         // skills : 20-21 points dans 9 compétences (on en choisit 7)

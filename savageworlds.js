@@ -4,7 +4,11 @@ var savageWorlds = {
         skill: {
             'Combat': 'Agilité',
             'Conduite': 'Agilité',
-            'Connaissance': 'Intellect',
+            'Connaissance Art': 'Intellect',
+            'Connaissance Science': 'Intellect',
+            'Connaissance Eco/Gestion': 'Intellect',
+            'Connaissance Lettre': 'Intellect',
+            'Connaissance Informatique': 'Intellect',
             'Crochetage': 'Agilité',
             'Discrétion': 'Agilité',
             'Équitation': 'Agilité',

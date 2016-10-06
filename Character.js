@@ -32,6 +32,9 @@ var Character = function () {
             this.skill[skill] = 4;
         } else {
             this.skill[skill] += 2;
+            if (this.skill[skill] > 10) {
+                this.skill[skill] = 10;  // ceiling = 10
+            }
         }
     };
 };
