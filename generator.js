@@ -2,9 +2,45 @@ var generator = {
     init: function () {
         $('button').click(function (e) {
             var obj = generator.generate();
-            $('#export').text(JSON.stringify(obj, null, 2));
+            generator.render(obj);
             return false;
         });
+    },
+    render: function (pc) {
+        //attr
+        var view = $('#attributes');
+        view.empty();
+        Object.keys(pc.attribute).forEach(function (key, idx) {
+            view.append('<tr><th>' + key + '</th><td>d' + pc.attribute[key] + '</td></tr>');
+        });
+        //skills
+        view = $('#skills');
+        view.empty();
+        Object.keys(pc.skill).forEach(function (key, idx) {
+            view.append('<tr><th>' + key + '</th><td>d' + pc.skill[key] + '</td></tr>');
+        });
+        // civil state
+        view = $('#civilState');
+        view.find('.gender').text(pc.gender);
+        view.find('.age').text(pc.age);
+        view.find('.activity').text(pc.activity);
+        view.find('.incouple').text(pc.inCouple ? 'oui' : 'non');
+        //edges
+        view = $('#edges');
+        view.empty();
+        pc.edge.forEach(function (key, idx) {
+            view.append('<tr><td>' + key + '</td></tr>');
+        });
+        //hindrances
+        view = $('#hindrances');
+        view.empty();
+        Object.keys(pc.hindrance).forEach(function (key, idx) {
+            view.append('<tr><td>' + key + '</td><td>' + pc.hindrance[key] + '</td></tr>');
+        });
+        // technical
+        view = $('#technical');
+        view.find('.overspentSkill').text(pc.getSkillPoint() + ' / ' + pc.skillCreationPoint);
+        view.find('.edgeBalance').text(pc.getEdgeBalance());
     },
     generate: function () {
         var nc = new Character();
@@ -144,7 +180,6 @@ var generator = {
                 remaining -= 2;
             }
         }
-
 
         return nc;
     },
