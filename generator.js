@@ -45,7 +45,9 @@ var generator = {
                 ch.age = dice.roll(4) + 6;
                 ch.emergencyTime = '1 h';
                 ch.activity = 'Élève primaire';
-                ch.hindrance = ['Gamin'];
+                ch.addHindrance('Gamin');
+                ch.attrCreationPoint = 3;
+                ch.skillCreationPoint = 10;
             }},
         {proba: 2, skill: 8, init: function (ch) {
                 ch.age = dice.roll(6) + 10;
