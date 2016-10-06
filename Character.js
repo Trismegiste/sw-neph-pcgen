@@ -7,6 +7,8 @@ var Character = function () {
     this.skill = {};
     this.gender = '';
     this.age = 0;
+    this.hindrance = [];
+    this.edge = [];
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {

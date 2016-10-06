@@ -13,25 +13,20 @@ var generator = {
         nc.gender = (Math.random() > 0.5) ? 'M' : 'F';
         // age
         var ageChoice = this.rollAge();
-        nc.age = ageChoice.age();
-        nc.emergencyTime = ageChoice.emergencyTime;
-        nc.activity = ageChoice.label;
+        ageChoice.init(nc);
 
+        // skill choice
         var skill = Object.keys(savageWorlds.trait.skill);
-        var nb = 10;
-        for (var i = 0; i < nb; i++) {
+        for (var i = 0; i < ageChoice.skill; i++) {
             var draw = Math.floor(Math.random() * skill.length);
             nc.increaseSkill(skill[draw]);
         }
         // investment
         var skill = Object.keys(nc.skill);
-        var nb = 10;
-        for (i = 0; i < nb; i++) {
+        for (i = 0; i < ageChoice.skill; i++) {
             var draw = Math.floor(Math.random() * skill.length);
             nc.increaseSkill(skill[draw]);
         }
-        //        console.log(invertSkill);
-
 
 
         // skills : 20-21 points dans 9 compétences (on en choisit 7)
@@ -46,20 +41,31 @@ var generator = {
         return nc;
     },
     ageModel: [
-        {proba: 1, label: 'Élève primaire', emergencyTime: '1 h', age: function () {
-                return dice.roll(4) + 6;
+        {proba: 1, skill: 7, init: function (ch) {
+                ch.age = dice.roll(4) + 6;
+                ch.emergencyTime = '1 h';
+                ch.activity = 'Élève primaire';
+                ch.hindrance = ['Gamin'];
             }},
-        {proba: 2, label: 'Collégien', emergencyTime: '4 h', age: function () {
-                return dice.roll(6) + 10;
+        {proba: 2, skill: 8, init: function (ch) {
+                ch.age = dice.roll(6) + 10;
+                ch.emergencyTime = '4 h';
+                ch.activity = 'Collégien';
             }},
-        {proba: 3, label: 'Lycéen – étudiant', emergencyTime: '2 j', age: function () {
-                return dice.roll(4) + dice.roll(4) + 14;
+        {proba: 3, skill: 9, init: function (ch) {
+                ch.age = dice.roll(4) + dice.roll(4) + 14;
+                ch.emergencyTime = '2 j';
+                ch.activity = 'Lycéen – étudiant';
             }},
-        {proba: 9, label: 'Adulte', emergencyTime: '1 semaine', age: function () {
-                return dice.roll(20) + dice.roll(20) + 18;
+        {proba: 9, skill: 10, init: function (ch) {
+                ch.age = dice.roll(20) + dice.roll(20) + 18;
+                ch.emergencyTime = '1 semaine';
+                ch.activity = 'Adulte';
             }},
-        {proba: 5, label: 'Retraité', emergencyTime: '1 mois', age: function () {
-                return dice.roll(10) + dice.roll(10) + dice.roll(10) + 50;
+        {proba: 5, skill: 12, init: function (ch) {
+                ch.age = dice.roll(10) + dice.roll(10) + dice.roll(10) + 50;
+                ch.emergencyTime = '1 mois';
+                ch.activity = 'Retraité';
             }}
     ],
     rollAge: function () {
