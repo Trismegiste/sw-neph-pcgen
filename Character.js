@@ -14,6 +14,9 @@ var Character = function () {
     this.inCouple = false;
     this.sibling = [];
     this.kaSun = 4;
+    this.parent = [];
+    this.children = [];
+
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {

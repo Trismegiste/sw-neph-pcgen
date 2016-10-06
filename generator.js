@@ -43,6 +43,16 @@ var generator = {
         pc.sibling.forEach(function (val) {
             view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
         });
+        // children
+        view = $('#children');
+        pc.children.forEach(function (val) {
+            view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
+        });
+        //parents
+        view = $('#parents');
+        pc.parent.forEach(function (val) {
+            view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
+        });
         // kaSun
         $('#kaSun').text('d' + pc.kaSun);
     },
@@ -187,11 +197,22 @@ var generator = {
                 }
             }
         }
-        // finishing touches
+        // sibling
         var sibling = this.siblingCount[dice.roll(8)];
         for (var k = 0; k < sibling; k++) {
             nc.sibling.push(this.generateSibling(nc.age));
         }
+        //parents
+        var cpt = 2;
+        draw = dice.roll(10);
+        if (draw >= 7) {
+            cpt = 1;
+            if (draw === 10) {
+                cpt = 0;
+            }
+        }
+        nc.parent.push({gender: 'F', age: nc.age + 20 + dice.roll(10)});
+        nc.parent.push({gender: 'M', age: nc.age + 20 + dice.roll(10)});
         // Ka-Sun
         draw = dice.roll(20);
         if (draw > 16) {
@@ -200,9 +221,20 @@ var generator = {
                 nc.kaSun = 8;
             }
         }
+        // children
+        if ((nc.inCouple) && (nc.age > 30)) {
+            var cpt = this.childrenCount[dice.roll(6)];
+            for (var k = 0; k < cpt; k++) {
+                nc.children.push({
+                    gender: Math.random() > 0.5 ? 'M' : 'F',
+                    age: nc.age - 30 + dice.roll(10)
+                });
+            }
+        }
 
         return nc;
     },
+    childrenCount: [0, 1, 1, 2, 2, 3],
     siblingCount: [0, 0, 0, 0, 1, 1, 1, 2],
     generateSibling: function (ageBase) {
         return {
@@ -236,7 +268,7 @@ var generator = {
                 if (dice.roll(4) == 1) {
                     ch.addHindrance('Myope', 'Mineur');
                 }
-                if (Math.random() > 0.5) {
+                if (Math.random() > 0.7) {
                     ch.inCouple = true;
                 }
             }},
