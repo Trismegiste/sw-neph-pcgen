@@ -83,9 +83,19 @@ var generator = {
         }
         nc.overspentPoint = nc.getSkillPoint() - nc.skillCreationPoint;
 
-        // skills : 20-21 points dans 9 compétences (on en choisit 7)
-        // nb competences par attribut (du plus haut au plus bas): 3 2 2 1 1
-        // pour les hhindrances : faire des poids (myope par exemple) ?
+        // money :
+        var draw = dice.roll(20);
+        if (draw <= 3) {
+            nc.addHindrance('Poches Percées');
+        } else if (draw < 14) {
+            // nothing
+        } else if (draw < 18) {
+            nc.addEdge('Riche');
+        } else {
+            nc.addEdge('Riche');
+            nc.addEdge('Très riche');
+        }
+
         // social : noble (ou statut), contacts etc...
         // pour la thune : utiliser les atout fric (à trier à part) poches percés, normal , riche , très riche
         // on rajoute peut-etre des atouts/hindrances

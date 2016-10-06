@@ -8,7 +8,7 @@ var Character = function () {
     this.gender = '';
     this.age = 0;
     this.hindrance = {};
-    this.edge = {};
+    this.edge = [];
     this.attrCreationPoint = 5;
     this.skillCreationPoint = 15;
     this.overspentPoint = 0;
@@ -91,6 +91,21 @@ var Character = function () {
         });
 
         return total;
+    };
+
+    this.addEdge = function (key) {
+        var edge = savageWorlds.edge[key];
+        if (edge === undefined) {
+            throw 'Unknown ' + key;
+        }
+        // already existing ?
+        for (var i = 0; i < this.edge.length; i++) {
+            if (this.edge[i] === key) {
+                return;
+            }
+        }
+        // adding
+        this.edge.push(key);
     };
 };
 
