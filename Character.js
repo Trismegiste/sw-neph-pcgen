@@ -11,7 +11,6 @@ var Character = function () {
     this.edge = [];
     this.attrCreationPoint = 5;
     this.skillCreationPoint = 15;
-    this.overspentPoint = 0;
     this.inCouple = false;
 
     var that = this;
@@ -100,6 +99,15 @@ var Character = function () {
         });
 
         return total;
+    };
+
+    this.getOverspentPoint = function () {
+        return this.getSkillPoint() - this.skillCreationPoint;
+    };
+
+    // positive if more Edges than Hindrances
+    this.getEdgeBalance = function () {
+        return 2 * (this.edge.length - 1) - this.getHindrancePoint();
     };
 
     this.addEdge = function (key) {

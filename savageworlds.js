@@ -192,9 +192,6 @@ var savageWorlds = {
         "Bricoleur de génie": {
             type: "N, voir texte",
             descr: "Peut bidouiller un engin une fois par session de jeu."},
-        "Champion": {
-            type: "N, voir texte",
-            descr: "+2 au dégâts et en Résistance contre le mal d'origine surnaturelle."},
         "Chanceux": {
             type: "N",
             descr: "+1 Jeton par session."},
@@ -255,9 +252,6 @@ var savageWorlds = {
         "Guérisseur": {
             type: "N, Âme d8",
             descr: "+2 au jets de Soins."},
-        "Guerrier saint / impie": {
-            type: "N, voir texte",
-            descr: "Voir texte"},
         "Increvable": {
             type: "N, Joker, Âme d8",
             descr: "Ignore le malus de Blessures sur les jets lorsqu'il passe dans un État critique."},
@@ -273,15 +267,9 @@ var savageWorlds = {
         "Lien mutuel": {
             type: "N, Joker, Âme d8",
             descr: "Le personnage peut donner des Jetons à ses compagnons."},
-        "Mage": {
-            type: "N, voir texte",
-            descr: "Chaque Relance sur le jet d'Arcanes réduit le coût en pouvoir du sort de 1."},
         "Maître des bêtes": {
             type: "N, Âme d8",
             descr: "Vous obtenez un compagnon animal."},
-        "Mentaliste": {
-            type: "N, Arcanes (Psioniques), Int d8, Psioniques d6",
-            descr: "+2 pour tout jet de Psioniques Opposé."},
         "Nerfs d'acier": {
             type: "N, Joker, Vigueur d8",
             descr: "Ignore 1 point de malus lié aux Blessures."},
@@ -291,27 +279,15 @@ var savageWorlds = {
         "Noble": {
             type: "N",
             descr: "Riche, Charisme +2, Statut et richesse."},
-        "Nouveau Pouvoir": {
-            type: "N, Arcanes",
-            descr: "Le personnage obtient un nouveau pouvoir."},
         "Panache": {
             type: "N, Âme d8",
             descr: "+2 en cas d'utilisation de Jeton pour un jet de Trait (y compris pour un jet d'Encaissement)"},
         "Poigne Ferme": {
             type: "N, Agi d8",
             descr: "Ignore la pénalité lié à une Plateforme instable."},
-        "Points de Pouvoir": {
-            type: "N, Arcanes",
-            descr: "+5 PP, une fois par Rang."},
         "Recycleur": {
             type: "N, Chanceux",
             descr: "Possibilité de trouver un équipement utile une fois par session"},
-        "Résistance aux arcanes": {
-            type: "N, Âme d8",
-            descr: "Armure +2 contre la magie, +2 pour résister aux pouvoirs."},
-        "Grande résistance aux arcanes": {
-            type: "N, Résistance aux arcanes",
-            descr: "Armure +4 contre la magie, +4 pour résister aux pouvoirs."},
         "Riche": {
             type: "N",
             descr: "3 fois les fonds de départ, 75 000 $ de salaire annuel."},

@@ -81,7 +81,6 @@ var generator = {
                 nc.attribute[attrToIncrease] += 2;
             }
         }
-        nc.overspentPoint = nc.getSkillPoint() - nc.skillCreationPoint;
 
         // money :
         var draw = dice.roll(20);
@@ -108,6 +107,11 @@ var generator = {
             default:
                 target = 2;
         }
+        // overriding hindrance requirement if existing unpaid edges :
+        if (nc.getEdgeBalance() > target) {
+            target = nc.getEdgeBalance();
+        }
+
         // adding more hindrance
         while (target > nc.getHindrancePoint()) {
             var lst = Object.keys(savageWorlds.hindrance);
@@ -124,6 +128,23 @@ var generator = {
 
             }
         }
+        // finalizing edges
+        var remaining = -nc.getEdgeBalance();
+        if (remaining > 0) {
+            // only even values
+            if ((remaining % 2) === 1) {
+                remaining--;
+                nc.skillCreationPoint++;
+            }
+            // adding edeges
+            while (remaining > 0) {
+                var lst = Object.keys(savageWorlds.edge);
+                var draw = Math.floor(Math.random() * lst.length);
+                nc.addEdge(lst[draw]);
+                remaining -= 2;
+            }
+        }
+
 
         return nc;
     },
