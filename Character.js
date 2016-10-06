@@ -13,6 +13,7 @@ var Character = function () {
     this.skillCreationPoint = 15;
     this.inCouple = false;
     this.sibling = [];
+    this.kaSun = 4;
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {
@@ -119,7 +120,7 @@ var Character = function () {
         // already existing ?
         for (var i = 0; i < this.edge.length; i++) {
             if (this.edge[i] === key) {
-                return;
+                throw key + ' already exists';
             }
         }
         // adding

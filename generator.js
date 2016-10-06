@@ -38,6 +38,13 @@ var generator = {
         view = $('#technical');
         view.find('.overspentSkill').text(pc.getSkillPoint() + ' / ' + pc.skillCreationPoint);
         view.find('.edgeBalance').text(pc.getEdgeBalance());
+        // siblings
+        view = $('#siblings');
+        pc.sibling.forEach(function (val) {
+            view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
+        });
+        // kaSun
+        $('#kaSun').text('d' + pc.kaSun);
     },
     generate: function () {
         var nc = new Character();
@@ -173,8 +180,11 @@ var generator = {
             while (remaining > 0) {
                 var lst = Object.keys(savageWorlds.edge);
                 var draw = Math.floor(Math.random() * lst.length);
-                nc.addEdge(lst[draw]);
-                remaining -= 2;
+                try {
+                    nc.addEdge(lst[draw]);
+                    remaining -= 2;
+                } catch (e) {
+                }
             }
         }
         // finishing touches
@@ -182,10 +192,18 @@ var generator = {
         for (var k = 0; k < sibling; k++) {
             nc.sibling.push(this.generateSibling(nc.age));
         }
+        // Ka-Sun
+        draw = dice.roll(20);
+        if (draw > 16) {
+            nc.kaSun = 6;
+            if (draw === 20) {
+                nc.kaSun = 8;
+            }
+        }
 
         return nc;
     },
-    siblingCount: [0, 1, 1, 1, 1, 2, 2, 3],
+    siblingCount: [0, 0, 0, 0, 1, 1, 1, 2],
     generateSibling: function (ageBase) {
         return {
             gender: Math.random() > 0.5 ? 'M' : 'F',
