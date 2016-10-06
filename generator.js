@@ -81,7 +81,7 @@ var generator = {
                 nc.attribute[attrToIncrease] += 2;
             }
         }
-
+        nc.overspentPoint = nc.getSkillPoint() - nc.skillCreationPoint;
 
         // skills : 20-21 points dans 9 compétences (on en choisit 7)
         // nb competences par attribut (du plus haut au plus bas): 3 2 2 1 1
@@ -117,11 +117,16 @@ var generator = {
                 ch.age = dice.roll(20) + dice.roll(20) + 18;
                 ch.emergencyTime = '1 semaine';
                 ch.activity = 'Adulte';
+                if (dice.roll(4) == 1) {
+                    ch.addHindrance('Myope', 'Mineur');
+                }
             }},
         {proba: 5, skill: 12, init: function (ch) {
                 ch.age = dice.roll(10) + dice.roll(10) + dice.roll(10) + 50;
                 ch.emergencyTime = '1 mois';
                 ch.activity = 'Retraité';
+                ch.skillCreationPoint = 20;
+                ch.addHindrance('Agé');
             }}
     ],
     rollAge: function () {

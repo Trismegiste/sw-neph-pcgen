@@ -11,6 +11,7 @@ var Character = function () {
     this.edge = {};
     this.attrCreationPoint = 5;
     this.skillCreationPoint = 15;
+    this.overspentPoint = 0;
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {
@@ -42,7 +43,7 @@ var Character = function () {
         }
     };
 
-    this.getHindrancecPoint = function () {
+    this.getHindrancePoint = function () {
         var total = 0;
         var that = this;
         Object.keys(this.hindrance).forEach(function (key, idx) {
@@ -77,6 +78,19 @@ var Character = function () {
 
         // adding hindrance :
         this.hindrance[key] = level;
+    };
+
+    this.getSkillPoint = function () {
+        var total = 0;
+        var that = this;
+        Object.keys(this.skill).forEach(function (key, idx) {
+            var skillLevel = that.skill[key];
+            var linkedAttribute = savageWorlds.trait.skill[key];
+            var attrLevel = that.attribute[linkedAttribute];
+            total += (skillLevel <= attrLevel) ? skillLevel / 2 - 1 : skillLevel - attrLevel / 2 - 1;
+        });
+
+        return total;
     };
 };
 

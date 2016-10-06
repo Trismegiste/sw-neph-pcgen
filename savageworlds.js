@@ -158,11 +158,13 @@ var savageWorlds = {
         "Têtu": {
             type: "Mineur",
             descr: "Le héros veut toujours avoir raison."},
-        "Vieux": {
+        "Agé": {
             type: "Majeur",
             descr: "-1 en Allure, -1 en Force et en Vigueur, 5 points supplémentaires pour des compétences liées à l'Intellect."}
     },
     edge: {
+        "Artisan": {type: 'N', descr: ''},
+        "Artiste": {type: 'N', descr: ''},
         "Acrobate": {
             type: "N, Agi d8, For d6",
             descr: "+2 aux jets d'Agilité liés à la souplesse, +1 en Parade si non-encombré."},
