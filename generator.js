@@ -28,6 +28,60 @@ var generator = {
             nc.increaseSkill(skill[draw]);
         }
 
+        var maxPerAttribute = {};
+        var countPerAttribute = {};
+        Object.keys(nc.skill).forEach(function (key, idx) {
+            if (nc.skill[key] > 4) {
+                var attr = savageWorlds.trait.skill[key];
+                if (maxPerAttribute[attr] === undefined) {
+                    maxPerAttribute[attr] = 4;
+                }
+                if (nc.skill[key] > maxPerAttribute[attr]) {
+                    maxPerAttribute[attr] = nc.skill[key];
+                }
+
+                if (countPerAttribute[attr] === undefined) {
+                    countPerAttribute[attr] = 0;
+                }
+                countPerAttribute[attr]++;
+            }
+        });
+        console.log(maxPerAttribute);
+        console.log(countPerAttribute);
+        // cost for attribute
+        var totalCost = 0;
+        Object.keys(maxPerAttribute).forEach(function (key, idx) {
+            totalCost += (maxPerAttribute[key] - 4) / 2;
+        });
+        console.log(totalCost);
+        // if overspent :
+        if (totalCost > nc.attrCreationPoint) {
+            var delta = totalCost - nc.attrCreationPoint;
+            var priority = Object.keys(countPerAttribute);
+            priority.sort(function (a, b) {
+                return countPerAttribute[a] - countPerAttribute[b];
+            });
+            console.log(priority);
+            for (var i = 0; i < delta; i++) {
+                var attrToDecrease = priority[i % priority.length];
+                maxPerAttribute[attrToDecrease] -= 2;
+            }
+            console.log(maxPerAttribute);
+        }
+        // set attibutes
+        Object.keys(maxPerAttribute).forEach(function (key, idx) {
+            nc.attribute[key] = maxPerAttribute[key];
+        });
+        // if remaining points
+        if (totalCost < nc.attrCreationPoint) {
+            var delta = -totalCost + nc.attrCreationPoint;
+            var priority = ['Vigueur', 'Âme', 'Force'];
+            for (var i = 0; i < delta; i++) {
+                var attrToIncrease = priority[i % priority.length];
+                nc.attribute[attrToIncrease] += 2;
+            }
+        }
+
 
         // skills : 20-21 points dans 9 compétences (on en choisit 7)
         // nb competences par attribut (du plus haut au plus bas): 3 2 2 1 1
