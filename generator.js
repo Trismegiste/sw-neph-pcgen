@@ -13,7 +13,12 @@ var generator = {
         //skills
         view = $('#skills');
         view.empty();
-        Object.keys(pc.skill).forEach(function (key, idx) {
+        // sorting skills
+        var reorder = Object.keys(pc.skill);
+        reorder.sort(function (a, b) {
+            return pc.skill[b] - pc.skill[a];
+        });
+        reorder.forEach(function (key, idx) {
             view.append('<tr><th>' + key + '</th><td>d' + pc.skill[key] + '</td></tr>');
         });
         // civil state
@@ -259,7 +264,7 @@ var generator = {
                 ch.emergencyTime = '2 j';
                 ch.activity = 'Lycéen – étudiant';
             }},
-        {proba: 9, skill: 10, init: function (ch) {
+        {proba: 10, skill: 10, init: function (ch) {
                 ch.age = dice.roll(20) + dice.roll(20) + 18;
                 ch.emergencyTime = '1 semaine';
                 ch.activity = 'Adulte';
@@ -270,7 +275,7 @@ var generator = {
                     ch.inCouple = true;
                 }
             }},
-        {proba: 5, skill: 12, init: function (ch) {
+        {proba: 4, skill: 12, init: function (ch) {
                 ch.age = dice.roll(10) + dice.roll(10) + dice.roll(10) + 50;
                 ch.emergencyTime = '1 mois';
                 ch.activity = 'Retraité';
