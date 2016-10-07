@@ -16,6 +16,7 @@ var Character = function () {
     this.kaSun = 4;
     this.parent = [];
     this.children = [];
+    this.skillCeiling = 8;
 
 
     var that = this;
@@ -42,8 +43,8 @@ var Character = function () {
             this.skill[skill] = 4;
         } else {
             this.skill[skill] += 2;
-            if (this.skill[skill] > 10) {
-                this.skill[skill] = 10;  // ceiling = 10
+            if (this.skill[skill] > this.skillCeiling) {
+                this.skill[skill] = this.skillCeiling;  // ceiling = this.skillCeiling
             }
         }
     };
