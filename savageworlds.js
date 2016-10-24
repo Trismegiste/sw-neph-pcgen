@@ -9,6 +9,7 @@ var savageWorlds = {
             'Connaissance Eco/Gestion': 'Intellect',
             'Connaissance Lettre': 'Intellect',
             'Connaissance Informatique': 'Intellect',
+            'Connaissance Langue': 'Intellect',
             'Crochetage': 'Agilité',
             'Discrétion': 'Agilité',
             'Équitation': 'Agilité',
