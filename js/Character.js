@@ -130,5 +130,12 @@ var Character = function () {
         // adding
         this.edge.push(key);
     };
+
+    this.removeEdge = function (key) {
+        var idx = this.edge.indexOf(key)
+        if (-1 !== idx) {
+            this.edge.splice(idx, 1)
+        }
+    }
 };
 

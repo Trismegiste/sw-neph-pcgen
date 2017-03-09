@@ -87,7 +87,10 @@
 
         onGenerate() {
             SwPcGen.model = SwPcGen.factory.generate()
-            //SwPcGen.factory.render(SwPcGen.model)
+            SwPcGen.model.on('update-atout', function () {
+                self.update()
+            })
         }
+
     </script>
 </spa>
