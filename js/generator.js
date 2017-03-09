@@ -51,34 +51,7 @@ var Generator = function () {
 
 Generator.prototype.render = function (pc) {
 
-    //skills
-    view = $('#skills');
-    view.empty();
-    // sorting skills
-    var reorder = Object.keys(pc.skill);
-    reorder.sort(function (a, b) {
-        return pc.skill[b] - pc.skill[a];
-    });
-    reorder.forEach(function (key, idx) {
-        view.append('<tr><th>' + key + '</th><td>d' + pc.skill[key] + '</td></tr>');
-    });
 
-    //edges
-    view = $('#edges');
-    view.empty();
-    pc.edge.forEach(function (key, idx) {
-        view.append('<tr><td>' + key + '</td></tr>');
-    });
-    //hindrances
-    view = $('#hindrances');
-    view.empty();
-    Object.keys(pc.hindrance).forEach(function (key, idx) {
-        view.append('<tr><td>' + key + '</td><td>' + pc.hindrance[key] + '</td></tr>');
-    });
-    // technical
-    view = $('#technical');
-    view.find('.overspentSkill').text(pc.getSkillPoint() + ' / ' + pc.skillCreationPoint);
-    view.find('.edgeBalance').text(pc.getEdgeBalance());
     // siblings
     view = $('#siblings');
     view.empty();

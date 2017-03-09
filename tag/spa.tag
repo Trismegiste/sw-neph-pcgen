@@ -31,14 +31,24 @@
 
         <div class="pure-u-1 pure-u-md-2-5">
             <section>
-                <table id="skills" class="pure-table pure-table-striped"></table>
+                <table class="pure-table pure-table-striped">
+                    <tr each="{ key, val in SwPcGen.model.skill }">
+                        <th>{ key }</th>
+                        <td>d{ val }</td>
+                    </tr>
+                </table>
                 <table class="pure-table pure-table-striped">
                     <thead><tr><th colspan="2">Handicaps</th></tr></thead>
-                    <tbody id="hindrances"></tbody>
+                    <tbody>
+                        <tr each="{ key, val in SwPcGen.model.hindrance }">
+                            <th>{ key }</th>
+                            <td>{ val }</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <table id="technical" class="pure-table pure-table-striped">
-                    <tr><th>Skill points</th><td class="overspentSkill"></td></tr>
-                    <tr><th>Equilibre atouts</th><td class="edgeBalance"></td></tr>
+                    <tr><th>Skill points</th><td>{SwPcGen.model.getSkillPoint()} / {SwPcGen.model.skillCreationPoint}</td></tr>
+                    <tr><th>Equilibre atouts</th><td>{SwPcGen.model.getEdgeBalance()}</td></tr>
                 </table>
             </section>
         </div>
