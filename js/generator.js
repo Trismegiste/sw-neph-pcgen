@@ -51,13 +51,6 @@ var Generator = function () {
 
 Generator.prototype.render = function (pc) {
 
-
-    // siblings
-    view = $('#siblings');
-    view.empty();
-    pc.sibling.forEach(function (val) {
-        view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
-    });
     // children
     view = $('#children');
     view.empty();
@@ -70,8 +63,6 @@ Generator.prototype.render = function (pc) {
     pc.parent.forEach(function (val) {
         view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
     });
-    // kaSun
-    $('#kaSun').text('d' + pc.kaSun);
 }
 
 Generator.prototype.generate = function () {

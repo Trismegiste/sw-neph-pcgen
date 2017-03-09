@@ -56,19 +56,34 @@
         <div class="pure-u-1 pure-u-md-1-5">
             <section>
                 <table class="pure-table pure-table-striped">
-                    <tbody><tr><th><img src="img/soleil.png" class="pure-img"/></th><td id="kaSun"></td></tr></tbody>
+                    <tbody><tr><th><img src="img/soleil.png" class="pure-img"/></th><td>d{SwPcGen.model.kaSun}</td></tr></tbody>
                 </table>
                 <table class="pure-table pure-table-striped">
                     <thead><tr><th colspan="2">Frères/Sœurs</th></tr></thead>
-                    <tbody id="siblings"></tbody>
+                    <tbody>
+                        <tr each="{ obj in SwPcGen.model.sibling }">
+                            <td>{ obj.gender }</td>
+                            <td>{ obj.age }</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <table class="pure-table pure-table-striped">
                     <thead><tr><th colspan="2">Parents</th></tr></thead>
-                    <tbody id="parents"></tbody>
+                    <tbody>
+                        <tr each="{ obj in SwPcGen.model.parent }">
+                            <td>{ obj.gender }</td>
+                            <td>{ obj.age }</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <table class="pure-table pure-table-striped">
                     <thead><tr><th colspan="2">Enfants</th></tr></thead>
-                    <tbody id="children"></tbody>
+                    <tbody>
+                        <tr each="{ obj in SwPcGen.model.children }">
+                            <td>{ obj.gender }</td>
+                            <td>{ obj.age }</td>
+                        </tr>
+                    </tbody>
                 </table>
             </section>
         </div>
