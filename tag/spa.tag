@@ -3,9 +3,27 @@
     <div class="pure-g">
         <div class="pure-u-1 pure-u-md-2-5">
             <section>
-                <button class="pure-button pure-button-primary" onclick="{
-                            onGenerate
-                        }">Generate</button>
+                <form class="pure-g centered pure-form">
+                    <div class="pure-u-1-2">
+                        <button class="pure-button pure-button-primary" onclick="{
+                               onGenerate
+                           }">Generate</button>
+                    </div>
+                    <div class="pure-u-1-2">
+                        <button class="pure-button button-error" onclick="{
+                                      onSave
+                                  }">Save</button>
+                    </div>
+                    <div class="pure-u-1">
+                        <select name="generated" class="pure-input-1" onchange="{ onSelectGenerated }">
+                            <option value=""></option>
+                            <option each="{obj, idx in SwPcGen.collection}" value="{idx}">
+                                #{idx} {obj.gender} {obj.age} d{obj.kaSun}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+
                 <table class="pure-table pure-table-striped">
                     <tr><th>Genre</th><td>{ SwPcGen.model.gender }</td></tr>
                     <tr><th>Age</th><td>{ SwPcGen.model.age }</td></tr>
@@ -18,35 +36,15 @@
                         <td>d{ val }</td>
                     </tr>
                 </table>
-                <table class="pure-table pure-table-striped">
-                    <thead><tr><th>Atouts</th></tr></thead>
-                    <tbody>
-                        <tr each="{ key in SwPcGen.model.edge }">
-                            <td>{ key }</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <atout></atout>
             </section>
         </div>
 
         <div class="pure-u-1 pure-u-md-2-5">
             <section>
+                <competence></competence>
+                <handicap></handicap>
                 <table class="pure-table pure-table-striped">
-                    <tr each="{ key, val in SwPcGen.model.skill }">
-                        <th>{ key }</th>
-                        <td>d{ val }</td>
-                    </tr>
-                </table>
-                <table class="pure-table pure-table-striped">
-                    <thead><tr><th colspan="2">Handicaps</th></tr></thead>
-                    <tbody>
-                        <tr each="{ key, val in SwPcGen.model.hindrance }">
-                            <th>{ key }</th>
-                            <td>{ val }</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="technical" class="pure-table pure-table-striped">
                     <tr><th>Skill points</th><td>{SwPcGen.model.getSkillPoint()} / {SwPcGen.model.skillCreationPoint}</td></tr>
                     <tr><th>Equilibre atouts</th><td>{SwPcGen.model.getEdgeBalance()}</td></tr>
                 </table>
@@ -87,6 +85,9 @@
                 </table>
             </section>
         </div>
+        <div class="pure-u-1">
+            <info></info>
+        </div>
     </div>
 
     <script>
@@ -94,7 +95,19 @@
 
         onGenerate() {
             SwPcGen.model = SwPcGen.factory.generate()
-            //SwPcGen.factory.render(SwPcGen.model)
+            SwPcGen.model.on('update', function () {
+                self.update()
+            })
         }
+
+        onSave() {
+            SwPcGen.collection.push(SwPcGen.model)
+        }
+
+        onSelectGenerated(e) {
+            SwPcGen.model = SwPcGen.collection[e.target.value]
+            this.generated.value = ""
+        }
+
     </script>
 </spa>

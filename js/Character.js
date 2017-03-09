@@ -94,6 +94,10 @@ var Character = function () {
         this.hindrance[key] = level;
     };
 
+    this.removeHindrance = function (key) {
+        delete this.hindrance[key]
+    }
+
     this.getSkillPoint = function () {
         var total = 0;
         var that = this;
@@ -130,5 +134,12 @@ var Character = function () {
         // adding
         this.edge.push(key);
     };
+
+    this.removeEdge = function (key) {
+        var idx = this.edge.indexOf(key)
+        if (-1 !== idx) {
+            this.edge.splice(idx, 1)
+        }
+    }
 };
 
