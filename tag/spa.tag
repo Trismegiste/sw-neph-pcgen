@@ -3,9 +3,27 @@
     <div class="pure-g">
         <div class="pure-u-1 pure-u-md-2-5">
             <section>
-                <button class="pure-button pure-button-primary" onclick="{
-                            onGenerate
-                        }">Generate</button>
+                <form class="pure-g centered pure-form">
+                    <div class="pure-u-1-2">
+                        <button class="pure-button pure-button-primary" onclick="{
+                               onGenerate
+                           }">Generate</button>
+                    </div>
+                    <div class="pure-u-1-2">
+                        <button class="pure-button button-error" onclick="{
+                                      onSave
+                                  }">Save</button>
+                    </div>
+                    <div class="pure-u-1">
+                        <select name="generated" class="pure-input-1" value="" onchange="{ onSelectGenerated }">
+                            <option value=""></option>
+                            <option each="{obj, idx in SwPcGen.collection}" value="{idx}">
+                                {idx}. {obj.gender} {obj.age}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+
                 <table class="pure-table pure-table-striped">
                     <tr><th>Genre</th><td>{ SwPcGen.model.gender }</td></tr>
                     <tr><th>Age</th><td>{ SwPcGen.model.age }</td></tr>
@@ -77,6 +95,15 @@
             SwPcGen.model.on('update', function () {
                 self.update()
             })
+        }
+
+        onSave() {
+            SwPcGen.collection.push(SwPcGen.model)
+        }
+
+        onSelectGenerated(e) {
+            SwPcGen.model = SwPcGen.collection[e.target.value]
+            this.generated.value = ""
         }
 
     </script>

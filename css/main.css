@@ -17,6 +17,17 @@ footer {
 }
 
 button {
-    width: 100%;
+    width: 80%;
+    margin-bottom: 1em;
+}
+.centered {
+    text-align: center;
+}
+
+.button-error {
+    background: #FC70C2; /* this is a red */
+}
+
+form.centered {
     margin-bottom: 1em;
 }

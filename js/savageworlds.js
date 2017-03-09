@@ -208,7 +208,7 @@ var savageWorlds = {
         "Commandement": {
             type: "N, Int d6",
             descr: "Les troupes ont un bonus de +1 pour récupérer d'un état Secoué."},
-        "Grande aura de commandement": {
+        "Grande aura de command.": {
             type: "N, Commandement",
             descr: "L'aura de commandement a un rayon de 10 cases."},
         "Contacts": {
