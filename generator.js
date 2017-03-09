@@ -271,7 +271,7 @@ var generator = {
                 if (dice.roll(4) == 1) {
                     ch.addHindrance('Myope', 'Mineur');
                 }
-                if (Math.random() > 0.7) {
+                if (Math.random() > 0.33) {
                     ch.inCouple = true;
                 }
             }},
