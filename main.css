@@ -1,11 +1,13 @@
 .content {
-    margin: 2em;
+    margin: 1em 0 0 1em;
 }
 
-.big-button {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-bottom: 1em
+.content section {
+    margin: 0 1em 1em 0;
+}
+
+.content section table {
+    margin-bottom: 1em;
 }
 
 footer {
