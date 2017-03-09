@@ -27,11 +27,12 @@
         <script src="./tag/handicap.tag" type="riot/tag"></script>
         <script src="./tag/competence.tag" type="riot/tag"></script>
         <script src="./tag/dice-option.tag" type="riot/tag"></script>
+        <script src="./tag/info.tag" type="riot/tag"></script>
         <script>
             // DiC for this SPA
             var SwPcGen = {
                 factory: new Generator(),
-                model: null,
+                model: new Character(),
                 collection: []
             }
             // Here we go

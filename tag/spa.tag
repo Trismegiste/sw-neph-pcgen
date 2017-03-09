@@ -85,6 +85,9 @@
                 </table>
             </section>
         </div>
+        <div class="pure-u-1">
+            <info></info>
+        </div>
     </div>
 
     <script>

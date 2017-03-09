@@ -158,8 +158,8 @@ var savageWorlds = {
             descr: "-1 en Allure, -1 en Force et en Vigueur, 5 points supplémentaires pour des compétences liées à l'Intellect."}
     },
     edge: {
-        "Artisan": {type: 'N', descr: ''},
-        "Artiste": {type: 'N', descr: ''},
+        "Artisan": {type: 'N', descr: 'Jet de INT'},
+        "Artiste": {type: 'N', descr: 'Jet de ÂME'},
         "Acrobate": {
             type: "N, Agi d8, For d6",
             descr: "+2 aux jets d'Agilité liés à la souplesse, +1 en Parade si non-encombré."},
@@ -225,7 +225,7 @@ var savageWorlds = {
             descr: "Peut dégainer une arme en action gratuite."},
         "Don des langues": {
             type: "N, Int d6",
-            descr: "Commence le jeu en maîtrisant un nombre de langues égal à son dé d'Intellect&nbsp;; possibilité de se faire comprendre par n'importe qui avec un jet d'Intellect à -2 après une semaine d'immersion."},
+            descr: "Commence le jeu en maîtrisant un nombre de langues égal à son dé d'Intellect; possibilité de se faire comprendre par n'importe qui avec un jet d'Intellect à -2 après une semaine d'immersion."},
         "Enragé": {
             type: "N",
             descr: "Voir texte."},
