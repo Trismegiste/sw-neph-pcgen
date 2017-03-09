@@ -17,7 +17,7 @@ var Character = function () {
     this.parent = [];
     this.children = [];
     this.skillCeiling = 8;
-
+    riot.observable(this);
 
     var that = this;
     savageWorlds.trait.attribute.forEach(function (attr) {
