@@ -18,14 +18,7 @@
                         <td>d{ val }</td>
                     </tr>
                 </table>
-                <table class="pure-table pure-table-striped">
-                    <thead><tr><th>Atouts</th></tr></thead>
-                    <tbody>
-                        <tr each="{ key in SwPcGen.model.edge }">
-                            <td>{ key }</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <atout></atout>
             </section>
         </div>
 
