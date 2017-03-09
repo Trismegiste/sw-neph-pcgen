@@ -30,16 +30,8 @@
                         <td>d{ val }</td>
                     </tr>
                 </table>
+                <handicap></handicap>
                 <table class="pure-table pure-table-striped">
-                    <thead><tr><th colspan="2">Handicaps</th></tr></thead>
-                    <tbody>
-                        <tr each="{ key, val in SwPcGen.model.hindrance }">
-                            <th>{ key }</th>
-                            <td>{ val }</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="technical" class="pure-table pure-table-striped">
                     <tr><th>Skill points</th><td>{SwPcGen.model.getSkillPoint()} / {SwPcGen.model.skillCreationPoint}</td></tr>
                     <tr><th>Equilibre atouts</th><td>{SwPcGen.model.getEdgeBalance()}</td></tr>
                 </table>
@@ -87,7 +79,7 @@
 
         onGenerate() {
             SwPcGen.model = SwPcGen.factory.generate()
-            SwPcGen.model.on('update-atout', function () {
+            SwPcGen.model.on('update', function () {
                 self.update()
             })
         }

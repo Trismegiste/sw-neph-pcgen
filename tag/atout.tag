@@ -24,7 +24,7 @@
                 SwPcGen.model.removeEdge(e.item.key)
                 SwPcGen.model.addEdge(e.target.value)
             }
-            SwPcGen.model.trigger('update-atout')
+            SwPcGen.model.trigger('update')
         }
     </script>
 </atout>

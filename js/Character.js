@@ -94,6 +94,10 @@ var Character = function () {
         this.hindrance[key] = level;
     };
 
+    this.removeHindrance = function (key) {
+        delete this.hindrance[key]
+    }
+
     this.getSkillPoint = function () {
         var total = 0;
         var that = this;
