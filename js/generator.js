@@ -49,22 +49,6 @@ var Generator = function () {
     ]
 }
 
-Generator.prototype.render = function (pc) {
-
-    // children
-    view = $('#children');
-    view.empty();
-    pc.children.forEach(function (val) {
-        view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
-    });
-    //parents
-    view = $('#parents');
-    view.empty();
-    pc.parent.forEach(function (val) {
-        view.append('<tr><td>' + val.gender + '</td><td>' + val.age + '</td></tr>');
-    });
-}
-
 Generator.prototype.generate = function () {
     var nc = new Character();
 
