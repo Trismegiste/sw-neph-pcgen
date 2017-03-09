@@ -50,12 +50,7 @@ var Generator = function () {
 }
 
 Generator.prototype.render = function (pc) {
-    //attr
-    var view = $('#attributes');
-    view.empty();
-    Object.keys(pc.attribute).forEach(function (key, idx) {
-        view.append('<tr><th>' + key + '</th><td>d' + pc.attribute[key] + '</td></tr>');
-    });
+
     //skills
     view = $('#skills');
     view.empty();
@@ -67,12 +62,7 @@ Generator.prototype.render = function (pc) {
     reorder.forEach(function (key, idx) {
         view.append('<tr><th>' + key + '</th><td>d' + pc.skill[key] + '</td></tr>');
     });
-    // civil state
-    view = $('#civilState');
-    view.find('.gender').text(pc.gender);
-    view.find('.age').text(pc.age);
-    view.find('.activity').text(pc.activity);
-    view.find('.incouple').text(pc.inCouple ? 'oui' : 'non');
+
     //edges
     view = $('#edges');
     view.empty();

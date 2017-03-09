@@ -3,16 +3,28 @@
     <div class="pure-g">
         <div class="pure-u-1 pure-u-md-2-5">
             <section>
-                <table id="civilState" class="pure-table pure-table-striped">
-                    <tr><th>Genre</th><td class="gender"></td></tr>
-                    <tr><th>Age</th><td class="age"></td></tr>
-                    <tr><th>En couple</th><td class="incouple"></td></tr>
-                    <tr><th>Activité</th><td class="activity"></td></tr>
+                <button class="pure-button pure-button-primary" onclick="{
+                            onGenerate
+                        }">Generate</button>
+                <table class="pure-table pure-table-striped">
+                    <tr><th>Genre</th><td>{ SwPcGen.model.gender }</td></tr>
+                    <tr><th>Age</th><td>{ SwPcGen.model.age }</td></tr>
+                    <tr><th>En couple</th><td>{ SwPcGen.model.inCouple ? 'oui' : 'non' }</td></tr>
+                    <tr><th>Activité</th><td>{ SwPcGen.model.activity }</td></tr>
                 </table>
-                <table id="attributes" class="pure-table pure-table-striped"></table>
+                <table class="pure-table pure-table-striped">
+                    <tr each="{ attr, val in SwPcGen.model.attribute }">
+                        <th>{ attr }</th>
+                        <td>d{ val }</td>
+                    </tr>
+                </table>
                 <table class="pure-table pure-table-striped">
                     <thead><tr><th>Atouts</th></tr></thead>
-                    <tbody id="edges"></tbody>
+                    <tbody>
+                        <tr each="{ key in SwPcGen.model.edge }">
+                            <td>{ key }</td>
+                        </tr>
+                    </tbody>
                 </table>
             </section>
         </div>
@@ -33,9 +45,6 @@
 
         <div class="pure-u-1 pure-u-md-1-5">
             <section>
-                <button class="pure-button pure-button-primary" onclick="{
-                        onGenerate
-                    }">Generate</button>
                 <table class="pure-table pure-table-striped">
                     <tbody><tr><th><img src="img/soleil.png" class="pure-img"/></th><td id="kaSun"></td></tr></tbody>
                 </table>
@@ -56,9 +65,11 @@
     </div>
 
     <script>
+        var self = this
+
         onGenerate() {
             SwPcGen.model = SwPcGen.factory.generate()
-            SwPcGen.factory.render(SwPcGen.model)
+            //SwPcGen.factory.render(SwPcGen.model)
         }
     </script>
 </spa>
