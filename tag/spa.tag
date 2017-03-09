@@ -15,10 +15,10 @@
                                   }">Save</button>
                     </div>
                     <div class="pure-u-1">
-                        <select name="generated" class="pure-input-1" value="" onchange="{ onSelectGenerated }">
+                        <select name="generated" class="pure-input-1" onchange="{ onSelectGenerated }">
                             <option value=""></option>
                             <option each="{obj, idx in SwPcGen.collection}" value="{idx}">
-                                {idx}. {obj.gender} {obj.age}
+                                #{idx} {obj.gender} {obj.age} d{obj.kaSun}
                             </option>
                         </select>
                     </div>
