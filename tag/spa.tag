@@ -24,12 +24,7 @@
 
         <div class="pure-u-1 pure-u-md-2-5">
             <section>
-                <table class="pure-table pure-table-striped">
-                    <tr each="{ key, val in SwPcGen.model.skill }">
-                        <th>{ key }</th>
-                        <td>d{ val }</td>
-                    </tr>
-                </table>
+                <competence></competence>
                 <handicap></handicap>
                 <table class="pure-table pure-table-striped">
                     <tr><th>Skill points</th><td>{SwPcGen.model.getSkillPoint()} / {SwPcGen.model.skillCreationPoint}</td></tr>
