@@ -1,11 +1,11 @@
 <competence>
     <form class="pure-form">
         <table class="pure-table pure-table-striped">
-            <tr each="{ key in reorder }">
+            <tr each="{ sortedSkill }">
                 <th>{ key }</th>
                 <td>
-                    <select value="{ SwPcGen.model.skill[key] }" data-is="dice-option" onchange="{
-                                onSkillEdit
+                    <select value="{ val }" data-is="dice-option" onchange="{
+                                parent.onSkillEdit
                             }">
                     </select>
                 </td>
@@ -26,9 +26,12 @@
 
         self.on('update', function () {
             if (SwPcGen.model) {
-                self.reorder = Object.keys(SwPcGen.model.skill)
-                self.reorder.sort(function (a, b) {
-                    return SwPcGen.model.skill[b] - SwPcGen.model.skill[a]
+                self.sortedSkill = []
+                Object.keys(SwPcGen.model.skill).forEach(function (key) {
+                    self.sortedSkill.push({key: key, val: SwPcGen.model.skill[key]})
+                })
+                self.sortedSkill.sort(function (a, b) {
+                    return b.val - a.val
                 })
             }
         })
