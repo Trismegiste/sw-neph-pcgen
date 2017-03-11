@@ -184,15 +184,9 @@ var savageWorlds = {
         "Bagarreur": {
             type: "N, For d8",
             descr: "+2 aux dégâts à mains nues"},
-        "Bidouilleur": {
-            type: "N, voir texte",
-            descr: "+2 aux jets de Réparation, temps de réparation réduit de moitié avec un Relance."},
         "Brave": {
             type: "N, Âme d6 +2",
             descr: "+2 aux jets de Terreur"},
-        "Bricoleur de génie": {
-            type: "N, voir texte",
-            descr: "Peut bidouiller un engin une fois par session de jeu."},
         "Chanceux": {
             type: "N",
             descr: "+1 Jeton par session."},
@@ -262,12 +256,6 @@ var savageWorlds = {
         "Leader naturel": {
             type: "N, Âme d8, Commandement",
             descr: "Le leader peut donner des Jetons à ses troupes."},
-        "Lien animal": {
-            type: "N",
-            descr: "Le personnage peut donner des Jetons à ses animaux."},
-        "Lien mutuel": {
-            type: "N, Joker, Âme d8",
-            descr: "Le personnage peut donner des Jetons à ses compagnons."},
         "Maître des bêtes": {
             type: "N, Âme d8",
             descr: "Vous obtenez un compagnon animal."},
