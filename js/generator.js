@@ -33,6 +33,9 @@ var Generator = function () {
                 if (Math.random() > 0.33) {
                     ch.inCouple = true;
                 }
+                if (dice.roll(4) != 1) {
+                    ch.increaseSkill('Conduite')
+                }
             }
         },
         {proba: 4, skill: 12, init: function (ch) {
@@ -44,6 +47,9 @@ var Generator = function () {
                 if (Math.random() > 0.5) {
                     ch.inCouple = true;
                 }
+                if (dice.roll(6) != 1) {
+                    ch.increaseSkill('Conduite')
+                }
             }
         }
     ]
@@ -53,7 +59,7 @@ Generator.prototype.generate = function () {
     var nc = new Character();
 
     // gender
-    nc.gender = (Math.random() > 0.5) ? 'M' : 'F';
+    nc.gender = (Math.random() >= 0.5) ? 'M' : 'F';
     // age
     var ageChoice = this.rollAge();
     ageChoice.init(nc);
